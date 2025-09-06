@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Background Colors */
+    --color-background: #FAFAFA; /* gray-50 */
+    --color-foreground: #1F2937; /* gray-800 */
+    --color-card: #FFFFFF; /* white */
+    --color-card-foreground: #1F2937; /* gray-800 */
+    --color-popover: #FFFFFF; /* white */
+    --color-popover-foreground: #1F2937; /* gray-800 */
+    --color-muted: #F3F4F6; /* gray-100 */
+    --color-muted-foreground: #6B7280; /* gray-500 */
+    
+    /* Primary Brand Colors */
+    --color-primary: #B8860B; /* darkgoldenrod */
+    --color-primary-foreground: #FFFFFF; /* white */
+    --color-secondary: #1E40AF; /* blue-700 */
+    --color-secondary-foreground: #FFFFFF; /* white */
+    
+    /* Accent Colors */
+    --color-accent: #FFD700; /* gold */
+    --color-accent-foreground: #1F2937; /* gray-800 */
+    
+    /* State Colors */
+    --color-success: #059669; /* emerald-600 */
+    --color-success-foreground: #FFFFFF; /* white */
+    --color-warning: #D97706; /* amber-600 */
+    --color-warning-foreground: #FFFFFF; /* white */
+    --color-error: #DC2626; /* red-600 */
+    --color-error-foreground: #FFFFFF; /* white */
+    --color-destructive: #DC2626; /* red-600 */
+    --color-destructive-foreground: #FFFFFF; /* white */
+    
+    /* UI Elements */
+    --color-border: #E5E7EB; /* gray-200 */
+    --color-input: #FFFFFF; /* white */
+    --color-ring: #FFD700; /* gold */
+    
+    /* Text Colors */
+    --color-text-primary: #1F2937; /* gray-800 */
+    --color-text-secondary: #6B7280; /* gray-500 */
+    
+    /* Radius */
+    --radius: 6px;
+  }
+
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+  }
+  
+  .font-headline {
+    font-family: 'Playfair Display', serif;
+  }
+  
+  .font-body {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .font-accent {
+    font-family: 'Source Code Pro', monospace;
+  }
+}
+
+@layer components {
+  .golden-thread {
+    position: relative;
+  }
+  
+  .golden-thread::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-accent), var(--color-primary));
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .golden-thread:hover::before,
+  .golden-thread.active::before {
+    width: 100%;
+  }
+  
+  .story-card {
+    @apply bg-card rounded-lg shadow-sm border border-border transition-all duration-300 ease-in-out;
+  }
+  
+  .story-card:hover {
+    @apply shadow-lg;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(255, 215, 0, 0.1);
+  }
+  
+  .editorial-shadow {
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.1);
+  }
+  
+  .heritage-gradient {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), transparent);
+  }
+  
+  .pulse-gold {
+    animation: pulse-gold 2s infinite;
+  }
+  
+  @keyframes pulse-gold {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+  
+  .sepia-enhance {
+    filter: sepia(5%) saturate(105%);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
